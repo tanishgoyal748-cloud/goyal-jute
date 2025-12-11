@@ -1,0 +1,11 @@
+{
+  "name": "Goyal PP Wovens",
+  "short_name": "GoyalPP",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#8B7355",
+  "icons": [
+    { "src": "/assets/icon-192.png", "sizes": "192x192", "type": "image/png" }
+  ]
+}
