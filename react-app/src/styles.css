@@ -22,7 +22,7 @@ body{font-family:Inter,system-ui,Arial,sans-serif;background:var(--bg);color:#22
 .btn.primary{background:var(--primary);color:#fff}
 .btn.ghost{background:transparent;border:1px solid rgba(0,0,0,0.06)}
 
-.products-section{padding:60px 0}
+.products-section{padding:60px 0;content-visibility:auto}
 .products-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
 .card{background:#fff;padding:12px;border-radius:12px;box-shadow:0 10px 30px rgba(15,15,15,0.06);overflow:hidden}
 .card img{width:100%;height:auto;object-fit:cover;border-radius:8px;aspect-ratio:3/2}
@@ -31,11 +31,11 @@ body{font-family:Inter,system-ui,Arial,sans-serif;background:var(--bg);color:#22
 .card h3{color:var(--primary);margin:10px 0 6px}
 .card p{color:var(--muted);font-size:0.95rem}
 
-.services-section{padding:60px 0}
+.services-section{padding:60px 0;content-visibility:auto}
 .services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
 .service-card{background:#fff;padding:16px;border-radius:10px}
 
-.contact-section{padding:60px 0}
+.contact-section{padding:60px 0;content-visibility:auto}
 .contact-inner{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start}
 .contact-form input,.contact-form textarea{width:100%;padding:10px;border-radius:8px;border:1px solid #eee}
 
