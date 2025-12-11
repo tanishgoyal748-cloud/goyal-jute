@@ -1,20 +1,20 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import Lightbox from './Lightbox'
+import CarouselLightbox from './CarouselLightbox'
 
 const PRODUCTS = [
-  {title:'PP Woven Bags', img:'https://images.unsplash.com/photo-1581091012184-7f9f5f0d8b6f?w=1600&h=1066&fit=crop', srcset:'https://images.unsplash.com/photo-1581091012184-7f9f5f0d8b6f?w=480&h=320&fit=crop 480w, https://images.unsplash.com/photo-1581091012184-7f9f5f0d8b6f?w=800&h=533&fit=crop 800w, https://images.unsplash.com/photo-1581091012184-7f9f5f0d8b6f?w=1600&h=1066&fit=crop 1600w', desc:'High-strength polypropylene woven bags for industrial packaging.'},
-  {title:'PP Woven Fabric', img:'https://images.unsplash.com/photo-1542705758-5a8d3b1f9b5b?w=1600&h=1066&fit=crop', srcset:'https://images.unsplash.com/photo-1542705758-5a8d3b1f9b5b?w=480&h=320&fit=crop 480w, https://images.unsplash.com/photo-1542705758-5a8d3b1f9b5b?w=800&h=533&fit=crop 800w, https://images.unsplash.com/photo-1542705758-5a8d3b1f9b5b?w=1600&h=1066&fit=crop 1600w', desc:'Woven fabric in multiple weights.'},
-  {title:'Laminated PP Bags', img:'https://images.unsplash.com/photo-1581091870622-d7f5a1d6c9c8?w=1600&h=1066&fit=crop', srcset:'https://images.unsplash.com/photo-1581091870622-d7f5a1d6c9c8?w=480&h=320&fit=crop 480w, https://images.unsplash.com/photo-1581091870622-d7f5a1d6c9c8?w=800&h=533&fit=crop 800w, https://images.unsplash.com/photo-1581091870622-d7f5a1d6c9c8?w=1600&h=1066&fit=crop 1600w', desc:'Water-resistant laminated options.'},
-  {title:'Bulk / FIBC', img:'https://images.unsplash.com/photo-1605902711622-cfb43c44367b?w=1600&h=1066&fit=crop', srcset:'https://images.unsplash.com/photo-1605902711622-cfb43c44367b?w=480&h=320&fit=crop 480w, https://images.unsplash.com/photo-1605902711622-cfb43c44367b?w=800&h=533&fit=crop 800w, https://images.unsplash.com/photo-1605902711622-cfb43c44367b?w=1600&h=1066&fit=crop 1600w', desc:'Custom big-bags for bulk handling.'},
-  {title:'Geotextile', img:'https://images.unsplash.com/photo-1518779578993-ec3579fee39f?w=1600&h=1066&fit=crop', srcset:'https://images.unsplash.com/photo-1518779578993-ec3579fee39f?w=480&h=320&fit=crop 480w, https://images.unsplash.com/photo-1518779578993-ec3579fee39f?w=800&h=533&fit=crop 800w, https://images.unsplash.com/photo-1518779578993-ec3579fee39f?w=1600&h=1066&fit=crop 1600w', desc:'Geotextiles for civil engineering.'},
-  {title:'Custom Solutions', img:'https://images.unsplash.com/photo-1562564055-71dff9f0a9b3?w=1600&h=1066&fit=crop', srcset:'https://images.unsplash.com/photo-1562564055-71dff9f0a9b3?w=480&h=320&fit=crop 480w, https://images.unsplash.com/photo-1562564055-71dff9f0a9b3?w=800&h=533&fit=crop 800w, https://images.unsplash.com/photo-1562564055-71dff9f0a9b3?w=1600&h=1066&fit=crop 1600w', desc:'Tailored sizes, finishes and printing.'}
+  {title:'PP Woven Fabric', img:'https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?w=800&q=80', hd:'https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?w=2000&q=90', desc:'Premium industrial polypropylene woven fabric with superior tensile strength and durability.'},
+  {title:'Jute Bags', img:'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80', hd:'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=2000&q=90', desc:'Eco-friendly natural jute bags perfect for sustainable packaging and storage solutions.'},
+  {title:'PP Woven Bags', img:'https://images.unsplash.com/photo-1492707892657-8a91d798cbfd?w=800&q=80', hd:'https://images.unsplash.com/photo-1492707892657-8a91d798cbfd?w=2000&q=90', desc:'High-strength polypropylene woven bags for industrial and agricultural applications.'},
+  {title:'Jute Bales', img:'https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?w=800&q=80', hd:'https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?w=2000&q=90', desc:'Premium raw jute fiber bales sourced and processed to industry standards.'},
+  {title:'Laminated Solutions', img:'https://images.unsplash.com/photo-1581091870622-d7f5a1d6c9c8?w=800&q=80', hd:'https://images.unsplash.com/photo-1581091870622-d7f5a1d6c9c8?w=2000&q=90', desc:'Water-resistant laminated PP fabric for extreme moisture protection.'},
+  {title:'Custom Orders', img:'https://images.unsplash.com/photo-1562564055-71dff9f0a9b3?w=800&q=80', hd:'https://images.unsplash.com/photo-1562564055-71dff9f0a9b3?w=2000&q=90', desc:'Tailored fabric solutions: custom dimensions, prints, and specialty finishes.'}
 ]
 
 export default function Products(){
   const [open, setOpen] = React.useState(false)
   const [index, setIndex] = React.useState(0)
-  const images = PRODUCTS.map(p => p.img)
+  const items = PRODUCTS.map(p => ({ img: p.img, hd: p.hd, title: p.title, caption: p.desc }))
 
   return (
     <section id="products" className="products-section">
@@ -41,7 +41,7 @@ export default function Products(){
           ))}
         </div>
       </div>
-      <Lightbox images={images} index={index} open={open} onClose={()=>setOpen(false)} />
+      <CarouselLightbox items={items} index={index} open={open} onClose={()=>setOpen(false)} />
     </section>
   )
 }
