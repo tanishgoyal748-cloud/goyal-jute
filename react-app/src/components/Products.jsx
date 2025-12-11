@@ -22,14 +22,20 @@ export default function Products(){
         <h2>Our Products</h2>
         <div className="products-grid">
           {PRODUCTS.map((p, i)=> (
-            <motion.article key={p.title} className="card" whileHover={{y:-8, scale:1.02}} initial={{opacity:0, y:24}} whileInView={{opacity:1, y:0}} viewport={{once:true}} transition={{delay:i*0.06}}>
-              <button className="img-btn" onClick={()=>{ setOpen(true); setIndex(i) }} aria-label={`Open ${p.title}`}>
-                  <img src={p.img} srcSet={p.srcset} sizes="(max-width:600px) 100vw, 33vw" alt={p.title} loading="lazy" width="1200" height="800" />
-                </button>
-              <h3>{p.title}</h3>
-              <p>{p.desc}</p>
-              <div className="card-actions">
-                <button className="btn light">Learn More</button>
+            <motion.article key={p.title} className="card" whileHover={{scale:1.02}} initial={{opacity:0, y:24}} whileInView={{opacity:1, y:0}} viewport={{once:true}} transition={{delay:i*0.08}}>
+              <div className="card-media" style={{backgroundImage:`url(${p.img})`}} role="img" aria-label={p.title} />
+              <div className="ai-badge">AI Image</div>
+              <div className="card-overlay">
+                <div>
+                  <h3>{p.title}</h3>
+                  <p>{p.desc}</p>
+                </div>
+                <div className="card-meta">
+                  <div className="card-actions">
+                    <button className="btn primary" onClick={()=>{ setOpen(true); setIndex(i) }} aria-label={`View ${p.title}`}><span className="btn-icon">🔍</span> View</button>
+                    <a className="btn ghost" href="#contact">Request Quote</a>
+                  </div>
+                </div>
               </div>
             </motion.article>
           ))}
